@@ -29,7 +29,7 @@ jobs:
         if: "!endsWith(matrix.python-version, '-dev')"
         with:
           python-version: ${{ matrix.python-version }}
-      - uses: deadsnakes/action@v3.1.0
+      - uses: deadsnakes/action@v3.2.0
         if: endsWith(matrix.python-version, '-dev')
         with:
           python-version: ${{ matrix.python-version }}
@@ -51,6 +51,10 @@ debug build of the selected Python version, by adding `debug: true`.
 The `nogil` input can be used instead of `debug` to install an *experimental*
 free-threaded build of the selected Python version, by adding `nogil: true`
 Only available for Python 3.13 and later.
+
+The action's `tk` input can be used to install Tkinter, which is not included
+by default. If `debug` is set then `tk-dbg` will be used. If `nogil` is set
+then `tk-nogil` will be used; only available for Python 3.13 and later.
 
 [available nightly versions]: https://launchpad.net/~deadsnakes/+archive/ubuntu/nightly/+packages
 [available versions]: https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa/+packages
